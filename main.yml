@@ -1,0 +1,25 @@
+name Firebase Emulators
+
+on
+  push
+    branches
+      - main
+
+jobs
+  build
+    runs-on ubuntu-latest
+
+    steps
+    - name Checkout repository
+      uses actionscheckout@v2
+
+    - name Set up Node.js
+      uses actionssetup-node@v3
+      with
+        node-version '14'
+
+    - name Install dependencies
+      run npm install
+
+    - name Start Firebase Emulators
+      run npm run firebase-emulators
